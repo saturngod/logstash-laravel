@@ -62,21 +62,7 @@ class LogstashHandler extends AbstractProcessingHandler{
         }
                 
         socket_close($sock);
-        // if ($socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP)) {
-            
-        //     $errorcode = socket_last_error();
-        //     $errormsg = socket_strerror($errorcode);
-    
-        //     die("Couldn't create socket: [$errorcode] $errormsg \n");
-            
-        //     socket_sendto($socket,$message,strlen($message),0,$server_ip,$server_port);
-
-        //     socket_close($socket);
-            
-        // }
         
-   
-
         
     }
 

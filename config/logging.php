@@ -41,10 +41,10 @@ return [
             'ignore_exceptions' => false,
         ],
 
-        'core_banking' => [
+        'logstash' => [
             'driver' => 'custom',
             'via' => App\Logging\LogstashLogger::class,
-            'channel' => 'core_banking',
+            'channel' => 'logstash_sample',
             'with' => [
                 'address' => "192.168.31.249",
                 'port' => "5428"

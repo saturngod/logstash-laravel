@@ -19,6 +19,9 @@ return [
 
     'default' => env('LOG_CHANNEL', 'stack'),
 
+    'address' => env('LOG_ADDRESS', 'localhost'),
+    'port' => env('LOG_PORT', '9195'),
+
     /*
     |--------------------------------------------------------------------------
     | Log Channels
@@ -44,13 +47,8 @@ return [
         'logstash' => [
             'driver' => 'custom',
             'via' => App\Logging\LogstashLogger::class,
-            'channel' => 'logstash_sample',
-            'with' => [
-                'address' => "192.168.31.249",
-                'port' => "5428"
-            ]
-
-            ],
+            'channel' => 'logstash_sample'
+        ],
 
         'single' => [
             'driver' => 'single',

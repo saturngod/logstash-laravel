@@ -2,14 +2,16 @@
 namespace App\Logging;
 // use Illuminate\Log\Logger;
 use DB;
-use Illuminate\Support\Facades\Auth;
 use Monolog\Logger;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use Monolog\Handler\AbstractProcessingHandler;
 
-class LogstashHandler extends AbstractProcessingHandler{
+class LogstashHandler extends AbstractProcessingHandler {
+
     private $config;
-    public function __construct($level = Logger::DEBUG, $bubble = true,$with) {
-        
+
+    public function __construct($with, $level = Logger::DEBUG, $bubble = true) {
         $this->config = $with;
         parent::__construct($level, $bubble);
     }
@@ -19,6 +21,11 @@ class LogstashHandler extends AbstractProcessingHandler{
     {
 
         $text = $record["message"];
+
+        if (App::environment('local')) {
+            Log::info($text);
+            return;
+        }
 
         $re = '/("|\')data:image(.+);base64,(.+)/m';
         $subst = '"[IMAGE FILE]"';
